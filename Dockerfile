@@ -5,7 +5,7 @@ ENV DEBIAN_FRONTEND noninteractive
 # Install dependencies
 RUN apt-get -qq update && \
     apt-get -qqy install --no-install-recommends \
-       unzip \
+       unzip tree \
      && rm -rf /var/lib/apt/lists/*
 
 # Everything will be installed in the directory but jdk.
@@ -44,7 +44,7 @@ ENV PATH ${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:$ANDROID_HOME/platform-
 # Install Android SDK Components
 ENV ANDROID_COMPONENTS "tools" \
                        "platform-tools" \
-                       "build-tools;25.0.3" \                                              
+                       "build-tools;25.0.2" \                                              
                        "platforms;android-23" 
 
 ENV GOOGLE_COMPONENTS "extras;android;m2repository" \
