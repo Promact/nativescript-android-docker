@@ -46,7 +46,11 @@ ENV ANDROID_COMPONENTS "tools" \
                        "platform-tools" \
                        "build-tools;25.0.3" \                                              
                        "platforms;android-23" 
-                       
+
+ENV GOOGLE_COMPONENTS "extras;android;m2repository" \
+                       "extras;google;m2repository" \
+                       "extras;google;google_play_services"
+
 ENV CONSTRAINT_LAYOUT "extras;m2repository;com;android;support;constraint;constraint-layout;1.0.2"\
                        "extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.2"
 
