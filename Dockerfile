@@ -39,13 +39,11 @@ RUN curl -sSL "${ANDROID_SDK_URL}" -o tools_${ANDROID_SDK_VERSION}-linux.zip \
     && unzip tools_${ANDROID_SDK_VERSION}-linux.zip -d ${ANDROID_HOME} \
   && rm -rf tools_${ANDROID_SDK_VERSION}-linux.zip
   
-ENV PATH ${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:$ANDROID_HOME/platform-tools:$PATH
-
 # Install Android SDK Components
 ENV ANDROID_COMPONENTS "tools" \
                        "platform-tools" \
-                       "build-tools;25.0.2" \                                              
-                       "platforms;android-23" 
+                       "build-tools;26.0.2" \                                              
+                       "platforms;android-26" 
 
 ENV GOOGLE_COMPONENTS "extras;android;m2repository" \
                        "extras;google;m2repository" \
@@ -60,10 +58,12 @@ RUN mkdir -p ${ANDROID_HOME}/licenses/ && \
     ${ANDROID_SDK_MANAGER}  ${ANDROID_COMPONENTS} \
                             ${GOOGLE_COMPONENTS} \
                             ${CONSTRAINT_LAYOUT}  
-                      
+
+ENV PATH ${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:$ANDROID_HOME/platform-tools:$ANDROID_HOME/build-tools/26.0.2:$PATH
+
 RUN apt-get update && apt-get install python-pip -y && pip install awscli
 
-ENV NODE_VERSION 8.5.0
+ENV NODE_VERSION 8.6.0
 
 # set up node
 RUN buildDeps='xz-utils gnupg2 dirmngr' \
@@ -93,4 +93,4 @@ RUN buildDeps='xz-utils gnupg2 dirmngr' \
     && apt-get purge -y --auto-remove $buildDeps \
     && ln -s /usr/local/bin/node /usr/local/bin/nodejs    
     
-RUN npm i -g nativescript  
+RUN npm i -g nativescript ionic cordova  
