@@ -63,7 +63,7 @@ ENV PATH ${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:$ANDROID_HOME/platform-
 
 RUN apt-get update && apt-get install python-pip -y && pip install awscli
 
-ENV NODE_VERSION 8.6.0
+ENV NODE_VERSION 8.9.0
 
 # set up node
 RUN buildDeps='xz-utils gnupg2 dirmngr' \
@@ -93,4 +93,4 @@ RUN buildDeps='xz-utils gnupg2 dirmngr' \
     && apt-get purge -y --auto-remove $buildDeps \
     && ln -s /usr/local/bin/node /usr/local/bin/nodejs    
     
-RUN npm i -g nativescript ionic cordova  
+RUN npm i -g ionic cordova@6.5  
