@@ -2,7 +2,7 @@ FROM promact/android-docker
 
 RUN apt-get update && apt-get install python-pip -y && pip install awscli
 
-ENV NODE_VERSION 8.9.0
+ENV NODE_VERSION 8.6.0
 
 # set up node
 RUN buildDeps='xz-utils gnupg2 dirmngr' \
